@@ -9,6 +9,7 @@ public:
 	void Inittialuze();
 	void Print();
 	void Draw();
+	bool IsCellOutside(int row, int colum);
 	int grid [20][10];
 
 private:
