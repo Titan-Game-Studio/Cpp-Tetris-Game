@@ -1,36 +1,26 @@
 #include <iostream>
 #include <raylib.h>
-#include "grid.h"
-#include "blocks.cpp"
+#include "game.h"
 
 using namespace std;
 
 int main() {
 
 	Color Dark_Blue = Color{ 44, 44, 127, 255 };
-
 	const int screenWidth = 300;
 	const int screenHeight = 600;
-
-	cout << "Hello World" << endl;
 
 	InitWindow(screenWidth, screenHeight, "Cpp-Tetris-Game");
 	SetTargetFPS(60);
 
-	Grid grid = Grid();
-	grid.Print();
-
-	IBlock block = IBlock();
+	Game game = Game();
 
 	while (WindowShouldClose() == false) {
 		BeginDrawing();
 		ClearBackground(Dark_Blue);
-		grid.Draw();
-		block.Draw();
-
+		game.Draw();
 		EndDrawing();
 	}
 
 	CloseWindow();
-	return 0;
 }
