@@ -11,11 +11,15 @@ public:
 	void Draw();
 	bool IsCellOutside(int row, int colum);
 	bool IsCellEmpty(int row, int colum);
+	int ClearFullRows();
 	int grid [20][10];
 
 private:
+	bool IsRowFull(int row);
+	void ClearRow(int row);
+	void MoveRowDown(int row, int numRows);
 	int numRows;
-	int numClos;
+	int numCols;
 	int cellSize;
 	std::vector<Color> colors;
 };
