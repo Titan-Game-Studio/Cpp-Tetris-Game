@@ -5,6 +5,7 @@ Block::Block()
 	cellSize = 30;
 	rotationState = 0;
 	colors = GetCellColors();
+	offset = 11;
 	rowOffset = 0;
 	columOffset = 0;
 }
@@ -14,7 +15,12 @@ void Block::Draw()
 	std::vector<Position> tiles = GetCellPositions();
 	for (Position item : tiles)
 	{
-		DrawRectangle(item.column * cellSize, item.row * cellSize, cellSize - 1, cellSize - 1, colors[id]);
+		int posX = item.column * cellSize + offset;
+		int posY = item.row * cellSize + offset;
+		int  width = cellSize - 1;
+		int height = cellSize - 1;
+		Color color = colors[id];
+		DrawRectangle(posX, posY, width, height, color);
 	}
 }
 

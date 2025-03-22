@@ -16,6 +16,7 @@ public:
 	void MoveBlockDown();
 	Grid grid;
 	bool gameOver;
+	int score;
 
 private:
 	bool IsBlockOutside();

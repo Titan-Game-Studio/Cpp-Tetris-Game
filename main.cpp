@@ -1,6 +1,7 @@
 #include <iostream>
 #include <raylib.h>
 #include "game.h"
+#include "colors.h"
 
 using namespace std;
 
@@ -19,25 +20,42 @@ bool EventTriggered(double interval)
 
 int main() {
 
-	Color Dark_Blue = Color{ 44, 44, 127, 255 };
-	const int screenWidth = 300;
-	const int screenHeight = 600;
+	const int screenWidth = 500;
+	const int screenHeight = 620;
+	const int targetFPS = 60;
+	const double deltaTime = 0.2;
 
-	InitWindow(screenWidth, screenHeight, "Cpp-Tetris-Game");
-	SetTargetFPS(60);
+	InitWindow(screenWidth, screenHeight, "Tetris-Game");
+	SetTargetFPS(targetFPS);
+
+	Font font = LoadFontEx("Font/monogram.ttf", 64, 0, 0);
 
 	Game game = Game();
 
 	while (WindowShouldClose() == false)
 	{
-		if (EventTriggered(0.2))
+		if (EventTriggered(deltaTime))
 		{
 			game.MoveBlockDown();
 		}
 
 		game.HandleInput();
 		BeginDrawing();
-		ClearBackground(Dark_Blue);
+		ClearBackground(darkBlue);
+		DrawTextEx(font, "Score", { 365, 15 }, 38, 2, WHITE);
+		DrawTextEx(font, "Next", { 370, 175 }, 38, 2, WHITE);
+		if (game.gameOver)
+		{
+			DrawTextEx(font, "GAME OVER", { 320, 450 }, 38, 2, WHITE);
+		}
+		DrawRectangleRounded({ 320, 55, 170, 60 }, 0.3, 6, lightBlue);
+
+		//char scoreText[10];
+		//sprintf(scoreText, "%d", game.score);
+		//Vector2 textSize = MeasureTextEx(font, scoreText, 38, 2);
+
+		//DrawTextEx(font, scoreText, { 320 + (170 - textSize.x) / 2, 65 }, 38, 2, WHITE);
+		DrawRectangleRounded({ 320, 215, 170, 180 }, 0.3, 6, lightBlue);
 		game.Draw();
 		EndDrawing();
 	}

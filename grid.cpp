@@ -7,6 +7,7 @@ Grid::Grid()
 	numRows = 20;
 	numCols = 10;
 	cellSize = 30;
+	offset = 11;
 	Inittialuze();
 	colors = GetCellColors();
 }
@@ -42,8 +43,8 @@ void Grid::Draw()
 		{
 			int cellValue = grid[row][colum];
 
-			int posX = colum * cellSize + 1;
-			int posY = row * cellSize + 1;
+			int posX = colum * cellSize + offset;
+			int posY = row * cellSize + offset;
 			int  width = cellSize - 1;
 			int height = cellSize - 1;
 			Color color = colors[cellValue];
