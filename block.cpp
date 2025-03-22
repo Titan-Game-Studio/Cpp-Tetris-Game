@@ -5,18 +5,17 @@ Block::Block()
 	cellSize = 30;
 	rotationState = 0;
 	colors = GetCellColors();
-	offset = 11;
 	rowOffset = 0;
 	columOffset = 0;
 }
 
-void Block::Draw()
+void Block::Draw(int offsetX, int offsetY)
 {
 	std::vector<Position> tiles = GetCellPositions();
 	for (Position item : tiles)
 	{
-		int posX = item.column * cellSize + offset;
-		int posY = item.row * cellSize + offset;
+		int posX = item.column * cellSize + offsetX;
+		int posY = item.row * cellSize + offsetY;
 		int  width = cellSize - 1;
 		int height = cellSize - 1;
 		Color color = colors[id];
