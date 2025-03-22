@@ -39,6 +39,7 @@ int main() {
 			game.MoveBlockDown();
 		}
 
+		UpdateMusicStream(game.music);
 		game.HandleInput();
 		BeginDrawing();
 		ClearBackground(darkBlue);
